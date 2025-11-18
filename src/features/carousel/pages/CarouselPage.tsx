@@ -106,9 +106,9 @@ export const CarouselPage = () => {
   return (
     <div
       ref={pageRef}
-      className={`carousel-page flex flex-col items-center justify-center h-full w-full p-4 pt-[72px] bg-[#311512]`}
+      className={`carousel-page flex flex-col items-center justify-center h-full p-4 pt-[72px] bg-[#311512] w-full `}
     >
-      <div className="scroll-number pr-4 pl-4 w-full flex flex-row justify-end text-white">
+      <div className="scroll-number pr-4 pl-4 w-full flex flex-row justify-end items-center text-white ">
         <div className="flex flex-col">
           <span className="scroll inline-block text-white">Scroll</span>
           <div className=" text-right">
@@ -121,7 +121,7 @@ export const CarouselPage = () => {
       <div
         ref={containerRef}
         id="slide-container"
-        className="-translate-y-[5%] slides-container relative w-full h-[90%] flex flex-col items-center justify-center transform-3d perspective-midrange perspective-origin-[50%_-5%]"
+        className="slides-container relative w-full h-[90%] flex flex-col items-center justify-center transform-3d perspective-midrange perspective-origin-[50%_-5%] max-w-[800px]"
       >
         <div ref={frontBufferRef} className="front-buffer absolute w-[98%]">
           <span className="card-title w-full flex flex-row items-center justify-center font-dm absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-5xl text-white opacity-0"></span>

@@ -55,7 +55,10 @@ export const RootLayout = () => {
   );
 
   return (
-    <div ref={pageRef} className={`h-dvh flex flex-col `}>
+    <div
+      ref={pageRef}
+      className={`h-dvh flex flex-col items-center justify-center w-full`}
+    >
       <header id="header" className="absolute top-0 left-0 right-0 z-60">
         <div className="flex items-center justify-between p-4">
           <WordMark fill="white" />
@@ -64,7 +67,7 @@ export const RootLayout = () => {
         </div>
       </header>
 
-      <main className="h-full overflow-clip">
+      <main className="h-full w-full overflow-clip flex flex-col items-center justify-center">
         <PageTransition ref={pageRef}>
           <Outlet />
         </PageTransition>

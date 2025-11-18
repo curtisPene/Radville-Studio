@@ -15,6 +15,7 @@ const App = () => {
     img.onload = () => {
       const color = colorthief.getColor(img);
       images[0].color = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+      console.log(images[0].color);
       document
         .querySelector(".carousel-page")
         ?.setAttribute("style", `background-color: ${images[0].color}`);

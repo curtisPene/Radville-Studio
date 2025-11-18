@@ -12,7 +12,10 @@ export const PageTransition = forwardRef<HTMLDivElement, PropsWithChildren>(
     useImperativeHandle(ref, () => internalRef.current!);
 
     return (
-      <div ref={internalRef} className="page w-full h-full">
+      <div
+        ref={internalRef}
+        className="page w-full h-full flex flex-col items-center justify-center"
+      >
         {children}
       </div>
     );

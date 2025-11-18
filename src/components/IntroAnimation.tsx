@@ -77,6 +77,16 @@ export const IntroAnimation = forwardRef<HTMLDivElement, IntroAnimationProps>(
         };
 
         const handleClick = () => {
+          const calculateScaleToFitScreen = () => {
+            // Calculate the distance from center to corner of screen
+            const vw = window.innerWidth;
+            const vh = window.innerHeight;
+            // Diagonal distance from center to corner
+            const diagonal = Math.sqrt((vw / 2) ** 2 + (vh / 2) ** 2);
+            // Assuming the bg-fill is around 300-400px, scale it up
+            return diagonal / 50; // Adjust 150 based on your element size
+          };
+
           gsap.set(videoRef.current, {
             opacity: 0,
             clipPath: "none",
@@ -99,7 +109,7 @@ export const IntroAnimation = forwardRef<HTMLDivElement, IntroAnimationProps>(
 
           // Expand to fill screen (clip stays 0–1 so it auto-scales)
           gsap.to(".bg-fill", {
-            scale: 4,
+            scale: calculateScaleToFitScreen(),
             duration: 0.8,
             ease: "power2.inOut",
             transformOrigin: "50% 50%",
