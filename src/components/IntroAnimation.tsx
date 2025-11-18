@@ -273,7 +273,7 @@ export const IntroAnimation = forwardRef<HTMLDivElement, IntroAnimationProps>(
     const Sequence1 = () => {
       return (
         <div className="sequence-1 intro-container z-100">
-          <div className="pipe-container w-full display flex flex-row justify-center items-center gap-4">
+          <div className="pipe-container w-full text-center display flex flex-row justify-center items-center gap-4">
             <div className="left flex flex-row justify-center items-center gap-2">
               <span className="span-1 text-gray-300 text-sm font-sans font-light opacity-0">
                 Thinking Things
@@ -294,7 +294,7 @@ export const IntroAnimation = forwardRef<HTMLDivElement, IntroAnimationProps>(
     const Sequence2 = () => {
       return (
         <div className="sequence-2 intro-container fixed inset-0 opacity-0">
-          <div className=" flex flex-col justify-center items-center black-background w-full h-full bg-neutral-900">
+          <div className=" flex flex-col justify-center items-center black-background w-full text-center h-full text-center bg-neutral-900">
             {/* SVG definition - keep this separate */}
             <svg className="absolute w-0 h-0">
               <defs>
@@ -325,7 +325,7 @@ export const IntroAnimation = forwardRef<HTMLDivElement, IntroAnimationProps>(
               <div className="relative w-50 h-66">
                 <video
                   ref={videoRef}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="absolute inset-0 w-full text-center h-full text-center object-cover"
                   src={videoSrc}
                   muted
                   loop
@@ -339,17 +339,17 @@ export const IntroAnimation = forwardRef<HTMLDivElement, IntroAnimationProps>(
                 ></div>
               </div>
 
-              <div className="text-content flex flex-col items-center gap-2">
+              <div className="text-content flex flex-col justify-center items-center gap-2">
                 <span className="text-3 font-extralight text-[10px] font-sans text-gray-400 opacity-0">
                   A MULTIDISCIPLINARY DESIGN STUDIO
                 </span>
                 <div className="flex flex-col items-center gap-4">
-                  <div className="overflow-hidden">
+                  <div className="overflow-hidden w-full text-center">
                     <h2 className="text-1 text-white font-serif text-2xl">
                       Elevating Spaces
                     </h2>
                   </div>
-                  <div className="overflow-hidden">
+                  <div className="overflow-hidden w-full text-center">
                     <h2 className="text-2 text-white font-serif text-2xl">
                       Defining Aesthetics, Cultivating Brands
                     </h2>
@@ -357,7 +357,7 @@ export const IntroAnimation = forwardRef<HTMLDivElement, IntroAnimationProps>(
                 </div>
                 <button
                   ref={buttonRef}
-                  className="relative overflow-hidden  bg-white text-[10px] mt-2 font-sans font-light px-6 py-1 rounded-full opacity-0"
+                  className="relative overflow-hidden  bg-white text-[10px] mt-2 font-sans font-light px-6 py-1 rounded-full text-center opacity-0"
                 >
                   <span
                     ref={visTextRef}
@@ -368,11 +368,11 @@ export const IntroAnimation = forwardRef<HTMLDivElement, IntroAnimationProps>(
 
                   <div
                     ref={buttonBackgroundRef}
-                    className="absolute flex flex-row items-center justify-center inset-0 bg-amber-800 translate-y-full"
+                    className="absolute flex flex-row items-center justify-center inset-0 bg-amber-800 translate-y-full text-center"
                   >
                     <span
                       ref={hiddenTextRef}
-                      className="secondary-enter-text transform relative top-full scale-[0.5] text-white"
+                      className="secondary-enter-text transform relative top-full text-center scale-[0.5] text-white"
                     >
                       Enter
                     </span>
@@ -389,7 +389,7 @@ export const IntroAnimation = forwardRef<HTMLDivElement, IntroAnimationProps>(
       <div
         ref={ref}
         id="intro-animation-scope"
-        className=" absolute flex flex-row justify-center items-center inset-0 w-full h-full bg-neutral-900 z-100"
+        className=" absolute flex flex-row justify-center items-center inset-0 w-full text-center h-full text-center bg-neutral-900 z-100"
       >
         <div ref={scopeRef}>
           {" "}

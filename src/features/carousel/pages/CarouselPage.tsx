@@ -124,7 +124,7 @@ export const CarouselPage = () => {
         className="slides-container relative w-full h-[90%] flex flex-col items-center justify-center transform-3d perspective-midrange perspective-origin-[50%_-5%] max-w-[800px]"
       >
         <div ref={frontBufferRef} className="front-buffer absolute w-[98%]">
-          <span className="card-title w-full flex flex-row items-center justify-center font-dm absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-5xl text-white opacity-0"></span>
+          <span className="card-title w-full flex flex-row items-center justify-center font-dm absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-4xl text-white opacity-0"></span>
           <img src="#" alt="#" className="w-full h-[270px] object-cover" />
         </div>
         <div
@@ -132,25 +132,25 @@ export const CarouselPage = () => {
           className="card-1 absolute w-[98%] flex flex-row items-center justify-center"
         >
           <div className="text-mask absolute w-full h-15 overflow-hidden">
-            <span className="card-title w-full flex flex-row items-center justify-center font-dm absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-5xl text-white opacity-0"></span>
+            <span className="card-title w-full flex flex-row items-center justify-center font-dm absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-4xl text-white opacity-0"></span>
           </div>
 
           <img src="#" alt="#" className="w-full h-[270px] object-cover" />
         </div>
         <div ref={card2Ref} className="card-2 absolute w-[98%]">
-          <span className="card-title w-full flex flex-row items-center justify-center font-dm absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-5xl text-white opacity-0"></span>
+          <span className="card-title w-full flex flex-row items-center justify-center font-dm absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-4xl text-white opacity-0"></span>
           <img src="#" alt="#" className="w-full h-[270px] object-cover" />
         </div>
         <div ref={card3Ref} className="card-3 absolute w-[98%]">
-          <span className="card-title w-full flex flex-row items-center justify-center font-dm absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-5xl text-white opacity-0"></span>
+          <span className="card-title w-full flex flex-row items-center justify-center font-dm absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-4xl text-white opacity-0"></span>
           <img src="#" alt="#" className="w-full h-[270px] object-cover" />
         </div>
         <div ref={card4Ref} className="card-4 absolute w-[98%]">
-          <span className="card-title w-full flex flex-row items-center justify-center font-dm absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-5xl text-white opacity-0"></span>
+          <span className="card-title w-full flex flex-row items-center justify-center font-dm absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-4xl text-white opacity-0"></span>
           <img src="#" alt="#" className="w-full h-[270px] object-cover" />
         </div>
         <div ref={backBufferRef} className="back-buffer absolute w-[98%]">
-          <span className="card-title w-full flex flex-row items-center justify-center font-dm absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-5xl text-white opacity-0"></span>
+          <span className="card-title w-full flex flex-row items-center justify-center font-dm absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-4xl text-white opacity-0"></span>
           <img src="#" alt="#" className="w-full h-[270px] object-cover" />
         </div>
       </div>
