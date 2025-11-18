@@ -12,7 +12,6 @@ const windowSlice = createSlice({
       state.width = action.payload.width;
       state.height = action.payload.height;
       state.headerHeight = action.payload.headerHeight;
-      console.log(action.payload);
     },
   },
 });

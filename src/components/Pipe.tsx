@@ -1,4 +1,4 @@
-import type { PipeProps } from "@/features/carousel/types/app.types";
+import type { PipeProps } from "@/types/app.types";
 import clsx from "clsx";
 export const Pipe: React.FC<PipeProps> = ({ className }) => {
   return (

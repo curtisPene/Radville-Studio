@@ -103,8 +103,6 @@ export const CarouselPage = () => {
     { dependencies: [isOpen] }
   );
 
-  console.log(slideNumber);
-
   return (
     <div
       ref={pageRef}

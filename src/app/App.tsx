@@ -4,7 +4,8 @@ import { AppRouter } from "./AppRouter";
 import images from "@/utils/images";
 import ColorThief from "colorthief";
 import { IntroAnimation } from "@/components/IntroAnimation";
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
+import gsap from "gsap";
 
 const App = () => {
   const setDefaultColor = () => {
@@ -21,16 +22,28 @@ const App = () => {
   };
   setDefaultColor();
 
-  const [introCompleted, setIntroCompleted] = useState<boolean>(false);
+  const [showIntro, setShowIntro] = useState<boolean>(true);
+  const introRef = useRef<HTMLDivElement>(null);
+
+  const fadeOutAndUnmount = useCallback(() => {
+    gsap.to(introRef.current, {
+      opacity: 0,
+      duration: 1.2,
+      onComplete: () => {
+        setShowIntro(false);
+      },
+    });
+  }, []);
 
   const handleIntorComplete = useCallback(() => {
-    setIntroCompleted(true);
-    console.log(introCompleted);
-  }, [introCompleted, setIntroCompleted]);
+    fadeOutAndUnmount();
+  }, [fadeOutAndUnmount]);
 
   return (
     <>
-      <IntroAnimation onComplete={handleIntorComplete} />
+      {showIntro && (
+        <IntroAnimation ref={introRef} onComplete={handleIntorComplete} />
+      )}
       <WindowListener />
       <AppRouter />
     </>

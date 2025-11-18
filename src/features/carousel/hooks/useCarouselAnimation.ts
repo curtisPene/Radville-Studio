@@ -45,7 +45,6 @@ export const useCarouselAnimation = ({
     setImageQueue();
 
     const setImages = () => {
-      console.log(imageQueue);
       cards.forEach((card, index) => {
         const image = imageQueue[index];
         card.querySelector("img")?.setAttribute("src", image.image);
