@@ -9,6 +9,9 @@ import type { RootState } from "@/stores/store";
 import { closeNav, openNav } from "@/stores/navSlice";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import type { NavOverlayType } from "@/types";
+import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(SplitText);
 
 export const NavOverlay: React.FC<NavOverlayType> = ({ pageRef }) => {
   const isOpen = useSelector((state: RootState) => state.navState.isOpen);
@@ -93,50 +96,115 @@ export const NavOverlay: React.FC<NavOverlayType> = ({ pageRef }) => {
     }
   );
 
-  useGSAP(() => {
-    if (isOpen && overlayRef.current) {
-      // Overlay slides in
-      gsap.from(overlayRef.current, {
-        y: "100%",
-        duration: 0.9,
-        ease: "power1.inOut",
-      });
+  useGSAP(
+    () => {
+      if (isOpen && overlayRef.current) {
+        // Overlay slides in
+        gsap.from(overlayRef.current, {
+          y: "100%",
+          duration: 0.9,
+          ease: "power1.inOut",
+        });
 
-      gsap.from(".reveal", {
-        y: "100%",
-        duration: 0.6,
-        ease: "power2.out",
-        stagger: 0.1,
-        delay: 0.7,
-      });
+        gsap.from(".reveal", {
+          y: "100%",
+          duration: 0.6,
+          ease: "power2.out",
+          stagger: 0.1,
+          delay: 0.7,
+        });
 
-      gsap.from("#wordmark", {
-        opacity: 0,
-        duration: 2.1,
-        ease: "sine",
-        delay: 1.2,
-      });
+        gsap.from("#wordmark", {
+          opacity: 0,
+          duration: 2.1,
+          ease: "sine",
+          delay: 1.2,
+        });
 
-      gsap.from("#info", {
-        opacity: 0,
-        duration: 2.5,
-        ease: "sine",
-        delay: 1.7,
-      });
+        gsap.from("#info", {
+          opacity: 0,
+          duration: 2.5,
+          ease: "sine",
+          delay: 1.7,
+        });
 
-      gsap.from(".footer-text", {
-        opacity: 0,
-        y: "200%",
-        duration: 0.6,
-        ease: "sine",
-        delay: 2,
-      });
-    }
+        gsap.from(".footer-text", {
+          opacity: 0,
+          y: "200%",
+          duration: 0.6,
+          ease: "sine",
+          delay: 2,
+        });
+      }
 
-    if (!isOpen && overlayRef.current) {
-      console.log("closing");
-    }
-  }, [isOpen]);
+      const cleanups: (() => void)[] = [];
+
+      const setupLinkAnimation = (selector: string) => {
+        if (!document.fonts.ready) return;
+
+        document.fonts.ready.then(() => {
+          const split = new SplitText(selector, { type: "chars" });
+
+          const handleMouseEnter = () => {
+            gsap.to(split.chars, {
+              rotateY: 180,
+              duration: 0.5,
+              stagger: 0.05,
+              ease: "sine.out",
+            });
+          };
+
+          const handleMouseLeave = () => {
+            gsap.to(split.chars, {
+              rotateY: 0,
+              duration: 0.5,
+              stagger: 0.05,
+              ease: "sine.out",
+            });
+          };
+
+          const handleTap = () => {
+            const tl = gsap.timeline();
+            tl.to(split.chars, {
+              rotateY: 180,
+              duration: 0.5,
+              stagger: 0.05,
+              ease: "sine.out",
+            }).to(split.chars, {
+              rotateY: 0,
+              duration: 0.5,
+              stagger: 0.05,
+              ease: "sine.out",
+            });
+
+            return tl;
+          };
+
+          const link = document.querySelector(selector);
+          link?.addEventListener("mouseenter", handleMouseEnter);
+          link?.addEventListener("mouseleave", handleMouseLeave);
+          link?.addEventListener("click", handleTap);
+
+          cleanups.push(() => {
+            split.revert();
+            link?.removeEventListener("mouseenter", handleMouseEnter);
+            link?.removeEventListener("mouseleave", handleMouseLeave);
+            link?.removeEventListener("click", handleTap);
+          });
+        });
+      };
+
+      setupLinkAnimation(".work-link");
+      setupLinkAnimation(".about-link");
+      setupLinkAnimation(".curation-link");
+      setupLinkAnimation(".contact-link");
+
+      return () => {
+        cleanups.forEach((cleanup) => cleanup());
+      };
+    },
+    { dependencies: [isOpen], scope: overlayRef }
+  );
 
   const overlay = isOpen
     ? createPortal(
@@ -158,18 +226,20 @@ export const NavOverlay: React.FC<NavOverlayType> = ({ pageRef }) => {
               <XIcon className=" text-white w-8 h-8 hover:cursor-pointer" />
             </button>
           </div>
-          <div className="overlay-content h-full p-4 flex flex-row">
-            <div className="h-full">
-              <nav className="h-full">
-                <ul className="flex flex-col justify-end h-full">
-                  <li className="overflow-hidden ">
+          <div className="overlay-content h-full p-4 flex flex-row w-full">
+            <div className="h-full w-full">
+              <nav className="h-full w-full">
+                <ul className="flex flex-col justify-end h-full w-full">
+                  <li className="overflow-hidden w-full">
                     <div className="reveal">
                       <Link
                         to={"/"}
                         onClick={(e) => {
-                          handleClose(e, "/");
+                          setTimeout(() => {
+                            handleClose(e, "/");
+                          }, 1500);
                         }}
-                        className="text-6xl"
+                        className="work-link text-6xl"
                       >
                         Work
                       </Link>
@@ -180,9 +250,11 @@ export const NavOverlay: React.FC<NavOverlayType> = ({ pageRef }) => {
                       <Link
                         to={"/test"}
                         onClick={(e) => {
-                          handleClose(e, "/test");
+                          setTimeout(() => {
+                            handleClose(e, "/test");
+                          }, 1500);
                         }}
-                        className="text-6xl"
+                        className="text-6xl about-link"
                       >
                         About
                       </Link>
@@ -193,9 +265,11 @@ export const NavOverlay: React.FC<NavOverlayType> = ({ pageRef }) => {
                       <Link
                         to={"#"}
                         onClick={(e) => {
-                          handleClose(e, "/test");
+                          setTimeout(() => {
+                            handleClose(e, "/test");
+                          }, 1500);
                         }}
-                        className="text-6xl"
+                        className="text-6xl curation-link"
                       >
                         Curation
                       </Link>
@@ -206,9 +280,11 @@ export const NavOverlay: React.FC<NavOverlayType> = ({ pageRef }) => {
                       <Link
                         to={"#"}
                         onClick={(e) => {
-                          handleClose(e, "/test");
+                          setTimeout(() => {
+                            handleClose(e, "/test");
+                          }, 1500);
                         }}
-                        className="text-6xl"
+                        className="text-6xl contact-link"
                       >
                         Contact
                       </Link>
