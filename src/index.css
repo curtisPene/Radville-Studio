@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@import "@fontsource/instrument-serif";
+/* Supports weights 100-900 */
+@import "@fontsource-variable/raleway";
+@import "@fontsource/dm-serif-text";
+
+body,
+.carousel-page-container {
+  background-color: #311512;
+  font-family: "DM Serif Text", serif;
+}
+
+nav {
+  color: white;
+  font-family: "Instrument Serif", serif;
+}
+
+.info {
+  color: white;
+  font-family: "Raleway", sans-serif;
+}
