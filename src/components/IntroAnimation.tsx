@@ -294,7 +294,7 @@ export const IntroAnimation = forwardRef<HTMLDivElement, IntroAnimationProps>(
     const Sequence2 = () => {
       return (
         <div className="sequence-2 intro-container fixed inset-0 opacity-0">
-          <div className=" flex flex-col justify-center items-center black-background w-full text-center h-full text-center bg-neutral-900">
+          <div className=" flex flex-col justify-center items-center black-background w-full text-center h-full bg-neutral-950">
             {/* SVG definition - keep this separate */}
             <svg className="absolute w-0 h-0">
               <defs>
@@ -325,7 +325,7 @@ export const IntroAnimation = forwardRef<HTMLDivElement, IntroAnimationProps>(
               <div className="relative w-50 h-66">
                 <video
                   ref={videoRef}
-                  className="absolute inset-0 w-full text-center h-full text-center object-cover"
+                  className="absolute inset-0 w-full text-center h-full object-cover"
                   src={videoSrc}
                   muted
                   loop

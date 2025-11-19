@@ -212,7 +212,7 @@ export const NavOverlay: React.FC<NavOverlayType> = ({ pageRef }) => {
           ref={overlayRef}
           className="fixed inset-0 bg-black flex flex-col z-70"
         >
-          <div className="overlay-header__container flex items-center justify-between p-4">
+          <div className="overlay-header__container flex items-center justify-between p-2">
             <div id="wordmark">
               <WordMark fill="white" />
             </div>
@@ -231,7 +231,7 @@ export const NavOverlay: React.FC<NavOverlayType> = ({ pageRef }) => {
               <nav className="h-full w-full">
                 <ul className="flex flex-col justify-end h-full w-full">
                   <li className="overflow-hidden w-full">
-                    <div className="reveal">
+                    <div className="reveal w-full">
                       <Link
                         to={"/"}
                         onClick={(e) => {
@@ -246,7 +246,7 @@ export const NavOverlay: React.FC<NavOverlayType> = ({ pageRef }) => {
                     </div>
                   </li>
                   <li className="overflow-hidden ">
-                    <div className="reveal">
+                    <div className="reveal w-full">
                       <Link
                         to={"/test"}
                         onClick={(e) => {
@@ -254,14 +254,14 @@ export const NavOverlay: React.FC<NavOverlayType> = ({ pageRef }) => {
                             handleClose(e, "/test");
                           }, 1500);
                         }}
-                        className="text-6xl about-link"
+                        className="text-6xl about-link w-full"
                       >
                         About
                       </Link>
                     </div>
                   </li>
-                  <li className="overflow-hidden ">
-                    <div className="reveal">
+                  <li className="overflow-hidden  w-full">
+                    <div className="reveal w-full">
                       <Link
                         to={"#"}
                         onClick={(e) => {
@@ -269,7 +269,7 @@ export const NavOverlay: React.FC<NavOverlayType> = ({ pageRef }) => {
                             handleClose(e, "/test");
                           }, 1500);
                         }}
-                        className="text-6xl curation-link"
+                        className="text-6xl curation-link w-full"
                       >
                         Curation
                       </Link>
@@ -284,7 +284,7 @@ export const NavOverlay: React.FC<NavOverlayType> = ({ pageRef }) => {
                             handleClose(e, "/test");
                           }, 1500);
                         }}
-                        className="text-6xl contact-link"
+                        className="text-6xl contact-link w-full"
                       >
                         Contact
                       </Link>
@@ -295,7 +295,7 @@ export const NavOverlay: React.FC<NavOverlayType> = ({ pageRef }) => {
             </div>
             <div
               id="info"
-              className="info h-full w-full flex flex-col items-end"
+              className="info h-full flex flex-col items-end w-fit"
             >
               <ul>
                 <li className="pb-4">
